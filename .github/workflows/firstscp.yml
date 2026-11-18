@@ -1,0 +1,24 @@
+name: My first script
+
+on:
+ push:
+  branches:
+   - main
+
+jobs:
+ first-job:
+  name: My First Job
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: Print welcome message
+     run: echo "welcome to github"
+   
+   - name: Print present working directory
+     run: pwd
+
+   - name: Print date
+     run: date
+
+   -name: End of script
+    run: echo "Pipeline executed successfully."
