@@ -1,26 +1,33 @@
-name: My first script
+
+name: My First GitHub Actions Workflow
 
 on:
- push:
-  branches:
-   - main
- 
- workflow_dispatch:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
 
 jobs:
- first-job:
-  name: My First Job
-  runs-on: ubuntu-latest
+  first-job:
+    name: My First Job
+    runs-on: ubuntu-latest
 
-  steps:
-   - name: Print welcome message
-     run: echo "welcome to github"
-   
-   - name: Print present working directory
-     run: pwd
+    steps:
+      - name: Print welcome message
+        run: echo "Welcome to GitHub Actions"
 
-   - name: Print date
-     run: date
+      - name: Print current directory
+        run: pwd
 
-   - name: End of script
-     run: echo "Pipeline executed successfully."
+      - name: Print Linux user
+        run: whoami
+
+      - name: Check Linux version
+        run: uname -a
+
+      - name: Print current date
+        run: date
+
+      - name: Pipeline completed
+        run: echo "GitHub Actions pipeline completed successfully"
