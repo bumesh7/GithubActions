@@ -20,5 +20,5 @@ jobs:
    - name: Print date
      run: date
 
-   -name: End of script
-    run: echo "Pipeline executed successfully."
+   - name: End of script
+     run: echo "Pipeline executed successfully."
