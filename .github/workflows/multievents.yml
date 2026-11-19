@@ -1,0 +1,53 @@
+
+name: Event Master Practice
+
+on:
+
+  push:
+    branches:
+      - main
+      - development
+    paths:
+      - 'src/**'
+      - '.github/workflows/**'
+
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Select environment
+        required: true
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+
+jobs:
+  event-check:
+    name: Identify Trigger Event
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display trigger
+        run: echo "GitHub Actions event received"
+
+      - name: Display event name
+        run: echo "Event is ${{ github.event_name }}"
+
+      - name: Display branch
+        run: echo "Branch is ${{ github.ref_name }}"
+
+      - name: Display selected environment
+        if: github.event_name == 'workflow_dispatch'
+        run: echo "Selected environment is ${{ inputs.environment }}"
+
+      - name: Complete
+        run: echo "Event Master Practice completed"

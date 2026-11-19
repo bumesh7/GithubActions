@@ -1,0 +1,35 @@
+name: CI pipeline build
+
+on:
+ push:
+  branches:
+   - main
+ 
+ pull_request:
+  branches:
+   - main
+
+jobs:
+ build:
+  name: build and test the java
+  runs-on: unbuntu-latest
+
+  steps:
+   - name: checkout source code
+     uses: actions/cheskout@v4
+  
+   - name: setup java 21
+     uses: actions/setup-java@v4
+     with:
+      distribution: tumren
+      java-version: '21'
+
+   - name: build java
+     run: mvn -B clean verify
+   
+   - name: upload artifact
+     uses: actions/upload-artifact@v4
+     with:
+      name: java-application
+      path: target/*.jar
+  
